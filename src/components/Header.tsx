@@ -7,6 +7,7 @@ interface Props {
   setSelectedRegion: (region: string) => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
+  selectedRegion: string;
 }
 
 const Header = ({
@@ -14,6 +15,7 @@ const Header = ({
   setSelectedRegion,
   searchQuery,
   setSearchQuery,
+  selectedRegion
 }: Props) => {
   const [active, setActive] = useState(false);
 
@@ -34,7 +36,7 @@ const Header = ({
           className="flex items-center justify-between dark:bg-[#2B3844] bg-white dark:text-white  w-48 py-3 px-5 rounded-md hover:cursor-pointer "
           onClick={() => setActive(!active)}
         >
-          <p>Filter By Region</p>
+          <p>{selectedRegion && selectedRegion.length > 0 ? selectedRegion : "Filter By Region"}</p>
           <MdKeyboardArrowUp
             className={`text-xl ${!active ? "rotate-180" : "rotate-0"}`}
           />
@@ -47,7 +49,10 @@ const Header = ({
                 <p
                   key={index}
                   className="hover:opacity-40 duration-300 hover:cursor-pointer"
-                  onClick={() => setSelectedRegion(region)}
+                  onClick={() => {
+                    setSelectedRegion(region)
+                    setActive(false)
+                  }}
                 >
                   {region}
                 </p>

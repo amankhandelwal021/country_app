@@ -86,7 +86,7 @@ const Home = () => {
         <div className="bg-gray-100 dark:bg-[#202C36] h-screen overflow-scroll no-scrollbar">
             <Navbar />
             <div className="">
-                <Header regions={regions} setSelectedRegion={setSelectedRegion} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+                <Header regions={regions} selectedRegion={selectedRegion} setSelectedRegion={setSelectedRegion} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 md:px-20 px-10">
                 {countries.length > 0 ? (
